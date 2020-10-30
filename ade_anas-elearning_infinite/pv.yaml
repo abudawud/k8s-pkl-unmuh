@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pkl-ade-anas-pv
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: 172.18.8.1
+    path: "/mnt/nfs_share/pkl_data/ade_anas"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pkl-ade-anas-pv-claim
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
